@@ -1,15 +1,13 @@
 FROM python:3.6-alpine
 
-RUN apk update
-
-RUN apk add --no-cache --virtual .build-deps \
+RUN apk update && apk add --no-cache \
     g++ \
     gcc \
     build-base \
     libxml2-dev \
     libffi-dev \
     libxslt-dev \
-    openssl-dev
+    openssl-dev 
 
 RUN pip install \
     --no-cache-dir \
@@ -22,4 +20,3 @@ RUN pip install \
     bs4==0.0.1 \
     scrapy-splash==0.7.2
 
-RUN apk del .build-deps
